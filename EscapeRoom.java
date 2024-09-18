@@ -65,6 +65,7 @@ public class EscapeRoom
     boolean play = true;
     while (play)
     {
+      game.pickupPrize();
       System.out.print("Enter your movement: ");
       String movement = UserInput.getValidInput(validCommands);
       if (movement.equals("right") || movement.equals("r")) { 
@@ -83,8 +84,6 @@ public class EscapeRoom
         play = false;
       }
     }
-
-  
 
     score += game.endGame();
 
