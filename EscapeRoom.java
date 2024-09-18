@@ -65,10 +65,19 @@ public class EscapeRoom
     boolean play = true;
     while (play)
     {
-      /* TODO: get all the commands working */
-	  /* Your code here */
-    
-      
+      String keypress = UserInput.getValidInput(validCommands);
+      if (keypress.equals("right") || keypress.equals("r")) { 
+        game.movePlayer(60, 0);
+      } 
+      if (keypress.equals("left") || keypress.equals("l")) { 
+        game.movePlayer(-60, 0);
+      }
+      if (keypress.equals("up") || keypress.equals("u")) { 
+        game.movePlayer(0, -60);
+      }
+      if (keypress.equals("down") || keypress.equals("d")) { 
+          game.movePlayer(0, 60);
+      }
     }
 
   
