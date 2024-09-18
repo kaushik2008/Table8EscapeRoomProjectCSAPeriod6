@@ -65,18 +65,22 @@ public class EscapeRoom
     boolean play = true;
     while (play)
     {
-      String keypress = UserInput.getValidInput(validCommands);
-      if (keypress.equals("right") || keypress.equals("r")) { 
+      System.out.print("Enter your movement: ");
+      String movement = UserInput.getValidInput(validCommands);
+      if (movement.equals("right") || movement.equals("r")) { 
         game.movePlayer(60, 0);
       } 
-      if (keypress.equals("left") || keypress.equals("l")) { 
+      if (movement.equals("left") || movement.equals("l")) { 
         game.movePlayer(-60, 0);
       }
-      if (keypress.equals("up") || keypress.equals("u")) { 
+      if (movement.equals("up") || movement.equals("u")) { 
         game.movePlayer(0, -60);
       }
-      if (keypress.equals("down") || keypress.equals("d")) { 
+      if (movement.equals("down") || movement.equals("d")) { 
           game.movePlayer(0, 60);
+      }
+      if (movement.equals("quit") || movement.equals("q")) {
+        play = false;
       }
     }
 
