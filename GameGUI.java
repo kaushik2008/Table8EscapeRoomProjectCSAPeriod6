@@ -12,6 +12,9 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 import java.util.Random;
+import javax.swing.*; 
+import java.awt.event.KeyEvent; 
+import java.awt.event.KeyListener;
 
 /**
  * A Game board on which to place and move players.
@@ -19,7 +22,7 @@ import java.util.Random;
  * @author PLTW
  * @version 1.0
  */
-public class GameGUI extends JComponent
+public class GameGUI extends JComponent implements KeyListener
 {
   static final long serialVersionUID = 141L; // problem 1.4.1
 
@@ -66,7 +69,7 @@ public class GameGUI extends JComponent
    * Constructor for the GameGUI class.
    * Creates a frame with a background image and a player that will move around the board.
    */
-  public GameGUI()
+  public GameGUI() 
   {
     
     try {
@@ -94,15 +97,43 @@ public class GameGUI extends JComponent
     frame.setTitle("EscapeRoom");
     frame.setSize(WIDTH, HEIGHT);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.addKeyListener(this); // Add key listener to the frame 
+    frame.setFocusable(true); // Make sure the frame can receive focus 
     frame.add(this);
     frame.setVisible(true);
     frame.setResizable(false); 
-
+    
     // set default config
     totalWalls = 20;
     totalPrizes = 3;
     totalTraps = 5;
   }
+  @Override 
+    public void keyPressed(KeyEvent e) { 
+      switch (e.getKeyCode()) { 
+        case KeyEvent.VK_UP: 
+          movePlayer(0, -60);
+          break; 
+        case KeyEvent.VK_DOWN: 
+          movePlayer(0, 60);
+          break; 
+        case KeyEvent.VK_LEFT: 
+          movePlayer(-60, 0);
+          break; 
+        case KeyEvent.VK_RIGHT: 
+          movePlayer(60, 0);
+          break; 
+        } 
+      }
+    @Override 
+    public void keyReleased(KeyEvent e) { 
+          // Implement if needed 
+    } 
+   
+    @Override 
+    public void keyTyped(KeyEvent e) { 
+          // Implement if needed 
+    } 
 
  /**
   * After a GameGUI object is created, this method adds the walls, prizes, and traps to the gameboard.
